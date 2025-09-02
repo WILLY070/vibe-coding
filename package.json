@@ -1,0 +1,11 @@
+{
+  "name": "flask-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Building Flask app...' && mkdir -p dist && cp -r static templates app.py requirements.txt dist/",
+    "start": "python3 app.py"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
