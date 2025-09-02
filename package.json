@@ -1,11 +1,15 @@
 {
-  "name": "flask-app",
+  "name": "flashcard-generator",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "echo 'Building Flask app...' && mkdir -p dist && cp -r static templates app.py requirements.txt dist/",
-    "start": "python3 app.py"
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "mkdir -p dist && cp -r public/* dist/ && cp server.js dist/"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
 }
