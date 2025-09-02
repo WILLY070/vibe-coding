@@ -1,0 +1,41 @@
+CREATE DATABASE IF NOT EXISTS studybuddy CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE studybuddy;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE notes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  filename VARCHAR(255),
+  content LONGTEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
+CREATE TABLE flashcards (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  note_id INT,
+  question TEXT,
+  answer LONGTEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (note_id) REFERENCES notes(id) ON DELETE SET NULL
+);
+
+CREATE TABLE payments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  amount_cents INT,
+  currency VARCHAR(10),
+  status VARCHAR(50),
+  intasend_id VARCHAR(255),
+  metadata JSON,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
