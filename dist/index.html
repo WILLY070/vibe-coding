@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Flashcard Generator</h1>
+            <p>Transform your text into interactive flashcards</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <textarea 
+                    id="textInput" 
+                    placeholder="Paste your text here to generate flashcards..."
+                    rows="8"
+                ></textarea>
+                
+                <div class="controls">
+                    <label for="cardCount">Number of cards:</label>
+                    <input type="number" id="cardCount" value="5" min="1" max="20">
+                    <button id="generateBtn">Generate Flashcards</button>
+                </div>
+            </div>
+
+            <div class="flashcards-section" id="flashcardsSection" style="display: none;">
+                <h2>Your Flashcards</h2>
+                <div id="flashcardsContainer"></div>
+                
+                <div class="premium-section">
+                    <h3>Unlock Premium Features</h3>
+                    <p>Get unlimited flashcards and advanced features</p>
+                    <button id="upgradeBtn">Upgrade for $9.99</button>
+                </div>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Generating flashcards...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
